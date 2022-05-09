@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - *
+      - '**'
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
