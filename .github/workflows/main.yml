@@ -11,7 +11,7 @@ jobs:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
       - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
       - run: echo "${{ secrets.TEST }}"
-      - run: echo ${{ secrets.TEST }} | base64 -d > .env.production
+      - run: echo ${{secrets.TEST}} | base64
       - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
       - name: Check out repository code
         uses: actions/checkout@v3
