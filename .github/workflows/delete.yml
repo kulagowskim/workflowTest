@@ -1,8 +1,5 @@
 name: GitHub Actions Delete
-on:
-  delete:
-    branches-ignore:
-      - deleteTest
+on: delete
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
@@ -19,4 +16,5 @@ jobs:
         id: show_branch
         env:
           GITHUB_EVENT: ${{github.event.ref}}
+      if: steps.show_branch.outputs.branch != 'deleteTest'
       - run: echo "ASDF ${{ steps.show_branch.outputs.branch }}"
