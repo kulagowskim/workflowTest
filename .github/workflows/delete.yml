@@ -19,4 +19,4 @@ jobs:
         id: show_branch
         env:
           GITHUB_EVENT: ${{github.event.ref}}
-      - run: echo "ASDF ${{ steps.extract_branch.outputs.branch }}"
+      - run: echo "ASDF ${{ steps.show_branch.outputs.branch }}"
