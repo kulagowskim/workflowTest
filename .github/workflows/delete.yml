@@ -1,0 +1,22 @@
+name: GitHub Actions Delete
+on:
+  delete:
+    branches-ignore:
+      - deleteTest
+jobs:
+  Explore-GitHub-Actions:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+      - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
+      - run: echo "The branch is ${{ github.ref }}"
+      - name: Check out repository code
+        uses: actions/checkout@v3
+      - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
+      - name: Extract branch
+        shell: bash
+        run: echo "##[set-output name=branch;]$(echo ${GITHUB_EVENT#refs/heads/})"
+        id: show_branch
+        env:
+          GITHUB_EVENT: ${{github.event.ref}}
+      - run: echo "ASDF ${{ steps.extract_branch.outputs.branch }}"
