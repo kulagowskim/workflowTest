@@ -1,9 +1,9 @@
 name: GitHub Actions Demo
-on: 
+on:
   workflow_dispatch:
   push:
     branches:
-      - '**'
+      - "**"
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
@@ -12,6 +12,16 @@ jobs:
       - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
       - run: echo "${{ secrets.TEST }}"
       - run: echo ${{secrets.TEST}} | base64
+      - run: echo "💡💡💡💡💡💡💡🎉🎉🎉🎉🎉🎉 ${{github.event.ref}}"
+      - name: Extract branch
+        shell: bash
+        run: echo "##[set-output name=branch;]$(echo ${GITHUB_EVENT#refs/heads/})"
+        id: show_branch
+        env:
+          GITHUB_EVENT: ${{github.event.ref}}
+      - name: test
+        if: steps.show_branch.outputs.branch != 'deleteTest'
+        run: echo "ASDF ${{ steps.show_branch.outputs.branch }}"
       - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
       - name: Check out repository code
         uses: actions/checkout@v3
