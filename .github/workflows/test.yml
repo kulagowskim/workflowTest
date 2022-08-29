@@ -19,6 +19,6 @@ jobs:
         run: >
           node ./index.js
           test
-          test 2
+          test2
           "${{ github.run_id }}"
           ${{ github.run_id }}
