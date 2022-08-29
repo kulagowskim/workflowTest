@@ -10,6 +10,6 @@ jobs:
     steps:
       - name: Running test workflow
         run: >
-          node ./ 
-          test 
+          node ./index.js
+          test
           test 2
