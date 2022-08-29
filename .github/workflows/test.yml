@@ -20,3 +20,5 @@ jobs:
           node ./index.js
           test
           test 2
+          "${{ github.run_id }}"
+          ${{ github.run_id }}
