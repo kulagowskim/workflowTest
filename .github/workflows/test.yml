@@ -1,0 +1,15 @@
+name: GitHub Actions test
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - "**"
+jobs:
+  Explore-GitHub-Actions:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Running test workflow
+        run: >
+          node ./ 
+          test 
+          test 2
